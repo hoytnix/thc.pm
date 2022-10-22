@@ -11,9 +11,7 @@
 
     <!-- Vendor -->
     <link rel="stylesheet" href="/static/css/vendor/{{ theme }}.min.css">
-    <link rel="preload" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></noscript>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Firebase -->
     <script type="module">import{initializeApp}from"https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";import{collection,addDoc,getFirestore}from"https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";const firebaseConfig={apiKey:"AIzaSyA1yZwOiPpS-Zx7YA-nKhBZPcjWC9pEX6w",authDomain:"free-thc.firebaseapp.com",projectId:"free-thc",storageBucket:"free-thc.appspot.com",messagingSenderId:"15919007663",appId:"1:15919007663:web:7b6cda410ddf8e5f27915a"},app=initializeApp(firebaseConfig),db=getFirestore(app);</script>
 
@@ -70,7 +68,7 @@
           {% endfor %}
           <li class="nav-item active social-top-nav">
             {% for key in social_media %}
-            <a href="{{ social_media[key] }}" target="_blank"><i class="fa fa-{{ key }}" aria-hidden="true"></i></a>
+            <a href="{{ social_media[key] }}" target="_blank"><i class="fa-brands fa-{{ key }}" aria-hidden="true"></i></a>
             {% endfor %}
           </li>
         </ul>
@@ -93,7 +91,7 @@
     <footer>
       <div class="social-footer bg-primary text-center py-3">
         {% for key in social_media %}
-        <a href="{{ social_media[key] }}" target="_blank"><i class="fa fa-{{ key }}" aria-hidden="true"></i></a>
+        <a href="{{ social_media[key] }}" target="_blank"><i class="fa-brands fa-{{ key }}" aria-hidden="true"></i></a>
         {% endfor %}
       </div>
 
