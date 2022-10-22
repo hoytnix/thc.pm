@@ -1,4 +1,6 @@
-# CMS
+[thc.pm](https://thc.pm)
+========================
+
 Static website generator using Jinja2
 
 ## Installation
