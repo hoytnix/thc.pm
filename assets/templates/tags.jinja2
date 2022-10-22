@@ -1,0 +1,46 @@
+{% extends "templates/macros/skeleton.jinja2" %}
+
+{% block insert_header %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Home",
+    "item": "{{ canonical_url }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "News",
+    "item": "{{ canonical_url }}/news"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "{{ title }}",
+    "item": "{{ canonical_url }}/{{ page_name }}"
+  }]
+}
+</script>
+
+<style>
+.container {
+	text-align: left;
+}
+</style>
+{% endblock %}
+
+{% block breadcrumbs %}
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Home</a></li>
+  <li class="breadcrumb-item"><a href="/news">News</a></li>
+  <li class="breadcrumb-item active">{{ title }}</li>
+</ol>
+{% endblock %}
+
+{% block body %}
+{% for item in kvs %}
+	<a href="/article/{{ item['key'] }}"><h3>{{ item['title'] }}</h3></a>
+{% endfor %}
+{% endblock %}

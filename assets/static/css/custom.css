@@ -1,0 +1,147 @@
+h1 {
+  margin: 0.5em 0;
+}
+
+.container {
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.breadcrumb {
+  margin-top: 1em;
+}
+
+.legal-disclaimer {
+  padding: 0 1em;
+  font-size: 75%;
+  font-weight: bold;
+}
+
+.social-footer {
+  font-size: 300%;
+}
+
+.social-footer > a {
+  color: white;
+  margin-right: 0.5em;
+}
+
+.contact-footer > p > a {
+  margin-left: 1em;
+  font-size: 75%;
+}
+
+.social-top-nav {
+  font-size: 150%;
+  margin-left: 1em;
+}
+
+.social-top-nav > a {
+  color: white;
+  margin: 0 0.5em;
+  float: right;
+}
+
+.contact-top > a {
+  margin-left: 1em;
+  font-size: 75%;
+}
+
+.navbar-brand {
+  margin-left: 20px;
+}
+
+.featured-img {
+  margin-top: 1em;
+  max-width: 100%;
+  max-height: 50vh;
+}
+
+.map-responsive {
+  overflow: hidden;
+  position: relative;
+  height: 320px;
+}
+.map-responsive iframe {
+  max-height: 50vh;
+  max-width: 100%;
+}
+
+/* Scroller styling */
+.scroller {
+  height: 1.2em;
+  line-height: 1.2em;
+  position: relative;
+  overflow: hidden;
+}
+.scroller > span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  animation: slide 12s infinite;
+  font-weight: bold;
+}
+@keyframes slide {
+  0% {
+    top: 0;
+  }
+  25% {
+    top: -1.2em;
+  }
+  50% {
+    top: -2.4em;
+  }
+  75% {
+    top: -3.6em;
+  }
+}
+
+.home-cta {
+  margin-left: 1em;
+}
+
+.home-subhead {
+  margin-top: 1em;
+}
+
+.inline-list {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.inline-list li {
+  display: inline;
+}
+
+.inline-list li:not(:first-child) {
+  margin-left: 1em;
+}
+
+.nav-link {
+  margin-left: 20px;
+}
+
+.img-coin {
+  width: 120px;
+  height: 120px;
+  max-height: 120px;
+  max-width: 120px;
+}
+
+.coins {
+  margin: 20px;
+}
+
+.coins > div {
+  margin: 20px;
+}
+
+.card-text,
+ul {
+  margin-bottom: 0;
+}
+
+.card-body a {
+  margin-top: 1em;
+}

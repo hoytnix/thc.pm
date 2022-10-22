@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% if description %}
+    <meta name="description" content="{{ description }}">
+    {% endif %}
+
+    <!-- Vendor -->
+    <link rel="stylesheet" href="/static/css/vendor/{{ theme }}.min.css">
+    <link rel="preload" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></noscript>
+
+    <script type="module">
+
+      // Import the functions you need from the SDKs you need
+    
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+      import { collection, addDoc, getFirestore } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";
+    
+      // TODO: Add SDKs for Firebase products that you want to use
+    
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+    
+      // Your web app's Firebase configuration
+    
+      const firebaseConfig = {
+    
+        apiKey: "AIzaSyA1yZwOiPpS-Zx7YA-nKhBZPcjWC9pEX6w",
+    
+        authDomain: "free-thc.firebaseapp.com",
+    
+        projectId: "free-thc",
+    
+        storageBucket: "free-thc.appspot.com",
+    
+        messagingSenderId: "15919007663",
+    
+        appId: "1:15919007663:web:7b6cda410ddf8e5f27915a"
+    
+      };
+    
+    
+      // Initialize Firebase
+    
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+    </script>
+
+    <!-- Proprietary -->
+    <link rel="stylesheet" href="/static/css/custom.css">
+
+    <!-- Open Graph -->
+    {% if title %}
+    <meta property="og:title" content="{{ title }}" />
+    {% else %}
+    <meta property="og:title" content="{{ proj_title }}" />
+    {% endif %}
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ canonical_url }}" />
+    {% if img %}
+    <meta property="og:image" content="{{ canonical_url }}/static/img/webp/{{ '.'.join(img.split('.')[:-1]) }}.webp" />
+    {% endif %}
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="{{ proj_title }}" />
+    {% if description %}
+    <meta property="og:description" content="{{ description }}" />
+    {% endif %}
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "LocalBusiness",
+        "@id": "{{ jsonld_id }}",
+        "url": "{{ canonical_url }}",
+        "name": "{{ proj_title }}",
+        "address":
+          "@type": "PostalAddress",
+          "streetAddress": "{{ contact['mail']['street'] }}",
+          "addressLocality": "{{ contact['mail']['city'] }}",
+          "addressRegion": "{{ contact['mail']['state'] }}",
+          "postalCode": "{{ contact['mail']['postal'] }}",
+          "addressCountry": "US"
+        },
+        "telephone": "{{ contact['phone'] }}",
+        "priceRange": "$$",
+        {%- if img %}
+        "image": "{{ canonical_url }}/static/img/webp/{{ '.'.join(img.split('.')[:-1]) }}.webp",
+        {% endif -%}
+        {%- if description -%}
+        "description": "{{ description }}",
+        {% endif -%}
+
+        "sameAs": [
+          {% for key in social_media -%}
+          "{{ social_media[key] }}"{% if not loop.last %},{% endif %}
+          {% endfor -%}
+        ]
+    }
+    </script>
+
+    <!-- Defer JS -->
+    <script type="text/javascript">
+    function GetJS() {
+      var element = document.createElement("script");
+      element.src = "/static/js/app.js";
+      document.body.appendChild(element);
+
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-{{ gtm }}');
+    }
+    </script>
+
+    <title>{% if title %}{{ title }} - {% endif %}{{ proj_title }}</title>
+
+    {% block insert_header %}{% endblock %}
+  </head>
+  <body onload="GetJS()">
+    <div class="contact-top bg-light text-dark text-center py-1">
+      <i class="fa fa-phone-square" aria-hidden="true"></i>
+      {{ contact['phone'] }}
+      <a href="tel:{{ contact['phone'] }}" class="btn btn-success btn-sm">Call {{ contact['name'] }}</a>
+      <a href="sms:{{ contact['phone'] }}" class="btn btn-success btn-sm">Text {{ contact['name'] }}</a>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="/">{{ proj_title }}</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+          {% for key, value in navbar_pages.items() %}
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ value|e }}">{{ key|e }}</a>
+            </li>
+          {% endfor %}
+          <li class="nav-item active social-top-nav">
+            {% for key in social_media %}
+            <a href="{{ social_media[key] }}" target="_blank"><i class="fa fa-{{ key }}" aria-hidden="true"></i></a>
+            {% endfor %}
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+        {% block breadcrumbs %}{% endblock %}
+
+        {% if img %}
+          <picture>
+            <source class="featured-img" srcset="/static/img/webp/weed_bitcoin.webp" type="image/webp">
+            <img class="featured-img" src="/static/img/raw/{{ img }}">
+          </picture>
+        {% endif %}
+
+        {% block body %}{% endblock %}
+    </div>
+
+    <footer>
+      <div class="social-footer bg-primary text-center py-3">
+        {% for key in social_media %}
+        <a href="{{ social_media[key] }}" target="_blank"><i class="fa fa-{{ key }}" aria-hidden="true"></i></a>
+        {% endfor %}
+      </div>
+
+      <div class="contact-footer bg-primary text-light text-center py-1">
+        <p>
+            <i class="fa fa-phone-square" aria-hidden="true"></i>
+            {{ contact['phone'] }}
+            <a href="tel:{{ contact['phone'] }}" class="btn btn-success btn-sm">Call {{ contact['name'] }}</a>
+            <a href="sms:{{ contact['phone'] }}" class="btn btn-success btn-sm">Text {{ contact['name'] }}</a>
+        </p>
+        <p>
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            {{ contact['email'] }}
+            <a href="mailto:{{ contact['email'] }}" class="btn btn-success btn-sm">Email {{ contact['name'] }}</a>
+        </p>
+        <p>
+            <i class="fa fa-home" aria-hidden="true"></i>
+            {% for key in contact['mail'] %}{{ contact['mail'][key] }}{% if not loop.last %}, {% endif %}{% endfor %}
+        </p>
+        <p>
+          <div>
+            <div class="map-responsive">
+              <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q={% for key in contact['mail'] %}{{ contact['mail'][key].replace('#','%23') }}{% if not loop.last %}+{% endif %}{% endfor %}" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+          </div>
+        </p>
+      </div>
+
+      <div class="legal-disclaimer bg-dark text-muted text-center py-3">
+        <p>Copyright &copy; 2020 <a href="/"> {{ proj_title }}</a>.</p>
+        <p><a href="/privacy-policy">Privacy Policy</a> <a href="/terms-of-use" style="margin-left: 1em">Terms of Use</a></p>
+        <p style="font-weight: bolder">IMPORTANT: Earnings and Legal Disclaimers</p>
+        <p>Earnings and income representations made by {{ proj_title }}, and their advertisers/sponsors (collectively, "{{ proj_title }} Programs") are aspirational statements only of your earnings potential. The success of {{ proj_title }} Programs, testimonials and other examples used are exceptional, non-typical results and are not intended to be and are not a guarantee that you or others will achieve the same results. Individual results will always vary and yours will depend entirely on your individual capacity, work ethic, business skills and experience, level of motivation, diligence in applying {{ proj_title }} Programs, the economy, the normal and unforeseen risks of doing business, and other factors.</p>
+        <p>{{ proj_title }} Programs are not responsible for your actions. You are solely responsible for your own moves and decisions and the evaluation and use of our products and services should be based on your own due diligence. You agree that {{ proj_title }} Programs are not liable to you in any way for your results in using our products and services. See our <a href="/terms-of-use">Terms & Conditions</a> for our full disclaimer of liability and other restrictions.</p>
+        <p>{{ proj_title }} Programs may receive compensation for products and services they recommend to you. {{ proj_title }} Programs personally uses a recommended resource unless it states otherwise. If you do not want {{ proj_title }} Programs to be compensated for a recommendation, then we advise that you search online for the item through a non-affiliate link.</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="/static/js/vendor/jquery-3.2.1.slim.min.js"></script>
+    <script src="/static/js/vendor/popper.min.js"></script>
+    <script src="/static/js/vendor/bootstrap.min.js"></script>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-{{ gtm }}"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    {% block insert_footer %}{% endblock %}
+  </body>
+</html>

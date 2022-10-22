@@ -1,0 +1,58 @@
+{% extends "templates/macros/skeleton.jinja2" %}
+
+{% block insert_header %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Home",
+    "item": "{{ canonical_url }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "FAQs",
+    "item": "{{ canonical_url }}/faqs"
+  }]
+}
+</script>
+
+<style>
+.container {
+	text-align: left;
+}
+</style>
+{% endblock %}
+
+{% block breadcrumbs %}
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Home</a></li>
+  <li class="breadcrumb-item active">FAQs</li>
+</ol>
+{% endblock %}
+
+{% block body %}
+<h1>FAQs</h1>
+
+{% for page_name in items %}
+{% set item = items[page_name] %}
+<div class="card text-white bg-primary mb-3">
+  <div class="card-header">
+    <ul class="inline-list">
+      {% for tag in item['tags'] %}
+      <li><a href="/tag/{{ tag }}">[{{ tag }}]</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">{{ item['title'] }}</h4>
+    <p class="card-text">
+      Short Answer: {{ item['short'] }}<br/><br/>
+      <a class="btn btn-sm btn-secondary" href="/faq/{{ page_name }}">Read More</a>
+    </p>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

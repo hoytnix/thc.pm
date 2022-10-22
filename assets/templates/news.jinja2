@@ -1,0 +1,49 @@
+{% extends "templates/macros/skeleton.jinja2" %}
+
+{% block insert_header %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Home",
+    "item": "{{ canonical_url }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "News",
+    "item": "{{ canonical_url }}/news"
+  }]
+}
+</script>
+
+<style>
+.container {
+	text-align: left;
+}
+</style>
+{% endblock %}
+
+{% block breadcrumbs %}
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Home</a></li>
+  <li class="breadcrumb-item active">News</li>
+</ol>
+{% endblock %}
+
+{% block body %}
+{% for page_name in items %}
+{% set item = items[page_name] %}
+<p>
+<a href="/article/{{ page_name }}"><h3>{{ item['title'] }}</h3></a>
+<h4>Tags:</h4>
+<ul>
+	{% for tag in item['tags'] %}
+	<li><a href="/tag/{{ tag }}">{{ tag }}</a></li>
+	{% endfor %}
+</ul>
+</p>
+{% endfor %}
+{% endblock %}

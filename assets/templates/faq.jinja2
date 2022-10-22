@@ -1,0 +1,40 @@
+{% extends "templates/macros/skeleton.jinja2" %}
+
+{% block insert_header %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Home",
+    "item": "{{ canonical_url }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "News",
+    "item": "{{ canonical_url }}/faqs"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "{{ title }}",
+    "item": "{{ canonical_url }}/faq/{{ page_name }}"
+  }]
+}
+</script>
+{% endblock %}
+
+{% block breadcrumbs %}
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Home</a></li>
+  <li class="breadcrumb-item"><a href="/faqs">FAQs</a></li>
+  <li class="breadcrumb-item active">{{ title }}</li>
+</ol>
+{% endblock %}
+
+{% block body %}
+<h1>{{ title }}</h1>
+
+{{ body }}
+{% endblock %}

@@ -1,0 +1,1 @@
+Sitemap: {{ canonical_url }}/sitemap.xml

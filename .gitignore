@@ -1,0 +1,8 @@
+.firebase/
+dist/
+node_modules/
+venv/
+
+.firebaserc
+firebase-debug.log
+package-lock.json

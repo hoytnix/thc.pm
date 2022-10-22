@@ -1,0 +1,305 @@
+{% set popular_coins = [
+'xmr.svg',
+'btc.svg',
+'eth.svg',
+'doge.svg',
+'xrp.svg',
+'xlm.svg',
+'ada.svg',
+'sol.svg',
+'matic.svg',
+'maticmainnet.svg',
+'dot.svg',
+'trx.svg',
+'shib.svg',
+'link.svg',
+'etc.svg',
+'avax.svg',
+'uni.svg',
+'ltc.svg',
+'algo.svg',
+'bch.svg',
+'xno.svg',
+'dash.svg',
+'vet.svg',
+'zec.svg'
+] %}
+
+{% set stable_coins = [
+'usdt_omni.svg',
+'usdterc20.svg',
+'usdttrc20.svg',
+'usdc.svg',
+'busd.svg',
+'dai.svg',
+'usdp.svg',
+'tusd.svg',
+'gusd.svg',
+'ust.svg'
+] %}
+
+{% set other_coins = [
+'ae.svg',
+'ark.svg',
+'arpa.svg',
+'atom.svg',
+'ava.svg',
+'avabsc.svg',
+'avaerc20.svg',
+'avn.svg',
+'axs.svg',
+'babydoge.svg',
+'bat.svg',
+'bcd.svg',
+'beam.svg',
+'bel.svg',
+'blocks.svg',
+'bnbbsc.svg',
+'bnbmainnet.svg',
+'brise.svg',
+'bsv.svg',
+'btg.svg',
+'c98.svg',
+'cake.svg',
+'chr.svg',
+'chz.svg',
+'cns.svg',
+'coti.svg',
+'cro.svg',
+'ctsi.svg',
+'dao.svg',
+'dcr.svg',
+'dgb.svg',
+'donations.svg',
+'egld.svg',
+'enj.svg',
+'eos.svg',
+'feg.svg',
+'fiat.svg',
+'filmainnet.svg',
+'firo.svg',
+'floki.svg',
+'fluf.svg',
+'front.svg',
+'ftm.svg',
+'ftt.svg',
+'fun.svg',
+'gas.svg',
+'grs.svg',
+'gspi.svg',
+'gt.svg',
+'hbar.svg',
+'hoge.svg',
+'hot.svg',
+'ht.svg',
+'icx.svg',
+'iotx.svg',
+'keanu.svg',
+'kishu.svg',
+'klay.svg',
+'klv.svg',
+'kmd.svg',
+'knc.svg',
+'leash.svg',
+'lgcy.svg',
+'lsk.svg',
+'luna.svg',
+'mana.svg',
+'marsh.svg',
+'mass.svg',
+'mco.svg',
+'miota.svg',
+'mx.svg',
+'near.svg',
+'neo.svg',
+'nftb.svg',
+'now.svg',
+'npxs.svg',
+'nwc.svg',
+'ocean.svg',
+'okb.svg',
+'om.svg',
+'omg.svg',
+'one.svg',
+'ont.svg',
+'payments.svg',
+'pit.svg',
+'poodl.svg',
+'qtum.svg',
+'raca.svg',
+'rbif.svg',
+'rep.svg',
+'rvn.svg',
+'rxcg.svg',
+'sand.svg',
+'scrt.svg',
+'spi.svg',
+'srk.svg',
+'stpt.svg',
+'strax.svg',
+'super.svg',
+'sxp.svg',
+'tfuel.svg',
+'theta.svg',
+'tko.svg',
+'trvl.svg',
+'usd.svg',
+'vib.svg',
+'wabi.svg',
+'waves.svg',
+'xdc.svg',
+'xem.svg',
+'xtz.svg',
+'xvg.svg',
+'xym.svg',
+'xyo.svg',
+'yfi.svg',
+'zen.svg',
+'zil.svg'
+] %}
+
+# Supported Coins
+
+<div class="container">
+
+    <h2>Most Popular Coins</h2>
+
+    {% for coin in popular_coins %}
+
+    {% if loop.first %}
+    <div class="row">
+        {% elif (loop.index - 1) is divisibleby(4) %}
+        <div class="row">
+            {% endif %}
+
+            <div class="col coins">
+                <div class="card bg-white mb-3" style="max-width: 20rem;">
+                    {% if coin_book[coin.split('.')[0]] %}
+                    <div class="card-header text-dark">{{ coin_book[coin.split('.')[0]] }}</div>
+                    {% else %}
+                    <div class="card-header text-dark">Exchange ${{ coin.split('.')[0] }}</div>
+                    {% endif %}
+                    <div class="card-body">
+                        <h4 class="card-title text-dark">${{ coin.split('.')[0] }}</h4>
+                        <p class="card-text">
+                            <picture>
+                                <source class="img-coin" srcset="/static/img/svg/{{ coin }}" type="image/svg">
+                                <img class="img-coin" src="/static/img/svg/{{ coin }}">
+                            </picture>
+                        </p>
+                        {% if coin_book[coin.split('.')[0]] %}
+                        <a class="btn btn-primary" href="/sell" role="button">Get Paid Instantly With {{
+                            coin_book[coin.split('.')[0]] }}</a>
+                        {% else %}
+                        <a class="btn btn-primary" href="/sell" role="button">Get Paid Instantly With ${{
+                            coin.split('.')[0] }}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            {% if loop.index is divisibleby(4) %}
+        </div>
+        {% endif %}
+        {% if loop.last %}
+    </div>
+    {% endif %}
+
+
+    {% endfor %}
+
+
+
+    <h2>Stable Coins</h2>
+
+    {% for coin in stable_coins %}
+
+    {% if loop.first %}
+    <div class="row">
+        {% elif (loop.index - 1) is divisibleby(4) %}
+        <div class="row">
+            {% endif %}
+
+            <div class="col coins">
+                <div class="card bg-white mb-3" style="max-width: 20rem;">
+                    {% if coin_book[coin.split('.')[0]] %}
+                    <div class="card-header text-dark">{{ coin_book[coin.split('.')[0]] }}</div>
+                    {% else %}
+                    <div class="card-header text-dark">Exchange ${{ coin.split('.')[0] }}</div>
+                    {% endif %}
+                    <div class="card-body">
+                        <h4 class="card-title text-dark">${{ coin.split('.')[0] }}</h4>
+                        <p class="card-text">
+                            <picture>
+                                <source class="img-coin" srcset="/static/img/svg/{{ coin }}" type="image/svg">
+                                <img class="img-coin" src="/static/img/svg/{{ coin }}">
+                            </picture>
+                        </p>
+                        {% if coin_book[coin.split('.')[0]] %}
+                        <a class="btn btn-primary" href="/sell" role="button">Get Paid Instantly With {{
+                            coin_book[coin.split('.')[0]] }}</a>
+                        {% else %}
+                        <a class="btn btn-primary" href="/sell" role="button">Get Paid Instantly With ${{
+                            coin.split('.')[0] }}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            {% if loop.index is divisibleby(4) %}
+        </div>
+        {% endif %}
+        {% if loop.last %}
+    </div>
+    {% endif %}
+
+    {% endfor %}
+
+
+
+    <h2>Other Supported Coins</h2>
+
+    {% for coin in other_coins %}
+
+    {% if loop.first %}
+    <div class="row">
+        {% elif (loop.index - 1) is divisibleby(4) %}
+        <div class="row">
+            {% endif %}
+
+            <div class="col coins">
+                <div class="card bg-white mb-3" style="max-width: 20rem;">
+                    {% if coin_book[coin.split('.')[0]] %}
+                    <div class="card-header text-dark">{{ coin_book[coin.split('.')[0]] }}</div>
+                    {% else %}
+                    <div class="card-header text-dark">Exchange ${{ coin.split('.')[0] }}</div>
+                    {% endif %}
+                    <div class="card-body">
+                        <h4 class="card-title text-dark">${{ coin.split('.')[0] }}</h4>
+                        <p class="card-text">
+                            <picture>
+                                <source class="img-coin" srcset="/static/img/svg/{{ coin }}" type="image/svg">
+                                <img class="img-coin" src="/static/img/svg/{{ coin }}">
+                            </picture>
+                        </p>
+                        {% if coin_book[coin.split('.')[0]] %}
+                        <a class="btn btn-primary" href="/sell" role="button">Get Paid Instantly With {{
+                            coin_book[coin.split('.')[0]] }}</a>
+                        {% else %}
+                        <a class="btn btn-primary" href="/sell" role="button">Get Paid Instantly With ${{
+                            coin.split('.')[0] }}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            {% if loop.index is divisibleby(4) %}
+        </div>
+        {% endif %}
+        {% if loop.last %}
+    </div>
+    {% endif %}
+
+    {% endfor %}
+
+</div>

@@ -1,0 +1,142 @@
+{% set tags = [
+'Pre-Packaged w/ SKU',
+'Pre-Packaged w/o SKU'
+] %}
+
+# Buy
+
+<h2 class="scroller">
+    <span>Δ8 / Δ9 / Δ10<br />
+        HHC & THCO<br />
+        Physical Goods<br />
+        Consulting</span>
+</h2>
+
+<form style="text-align:left">
+    <fieldset>
+        <legend>Search</legend>
+        <div class="form-group">
+            <label for="InputKeywords" class="form-label mt-4">Keywords</label>
+            <input type="text" class="form-control" id="InputKeywords" aria-describedby="KeywordsHelp"
+                placeholder="Enter Keywords">
+        </div>
+    </fieldset>
+
+    <div class="form-group row">
+        <label for="staticCategories" class="col-form-label">Categories</label>
+        <fieldset class="form-group">
+            {% for category in categories_book %}
+            {% set category_slug = category.replace('&','-').replace(' ','') %}
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    <a data-toggle="collapse" href=".collapse{{ category_slug }}" role="button" aria-expanded="false"
+                        aria-controls="collapse{{ category }}">
+                        {{ category }}
+                    </a>
+                </label>
+            </div>
+
+            {% for sub_category in categories_book[category] %}
+            <div class="form-check collapse collapse{{ category_slug }}">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    - {{ sub_category }}
+                </label>
+            </div>
+            {% endfor %}
+            {% endfor %}
+        </fieldset>
+    </div>
+
+    <div class="form-group row">
+        <label for="staticTags" class="col-form-label">Tags</label>
+        <fieldset class="form-group">
+            {% for tag in tags_book %}
+            {% set tag_slug = tag.replace('&','-').replace(' ','') %}
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    <a data-toggle="collapse" href=".collapse{{ tag_slug }}" role="button" aria-expanded="false"
+                        aria-controls="collapse{{ tag }}">
+                        {{ tag }}
+                    </a>
+                </label>
+            </div>
+
+            {% for sub_tag in tags_book[tag] %}
+            <div class="form-check collapse collapse{{ tag_slug }}">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    - {{ sub_tag }}
+                </label>
+            </div>
+            {% endfor %}
+            {% endfor %}
+        </fieldset>
+    </div>
+
+    <div class="form-group row">
+        <label for="staticcannabinoids" class="col-form-label">Cannabinoids</label>
+        <fieldset class="form-group">
+            {% for cannabinoid in cannabinoids_book %}
+            {% set cannabinoid_slug = cannabinoid.replace('&','-').replace(' ','') %}
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    <a data-toggle="collapse" href=".collapse{{ cannabinoid_slug }}" role="button" aria-expanded="false"
+                        aria-controls="collapse{{ cannabinoid }}">
+                        {{ cannabinoid }}
+                    </a>
+                </label>
+            </div>
+
+            {% for sub_cannabinoid in cannabinoids_book[cannabinoid] %}
+            <div class="form-check collapse collapse{{ cannabinoid_slug }}">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    - {{ sub_cannabinoid }}
+                </label>
+            </div>
+            {% endfor %}
+            {% endfor %}
+        </fieldset>
+    </div>
+
+    <div class="form-group row">
+        <label for="staticcountries" class="col-form-label">From Location</label>
+        <fieldset class="form-group">
+            {% for countries in countries_book %}
+            {% set countries_slug = countries.replace('&','-').replace(' ','') %}
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    <a data-toggle="collapse" href=".collapse{{ countries_slug }}" role="button" aria-expanded="false"
+                        aria-controls="collapse{{ countries }}">
+                        {{ countries }}
+                    </a>
+                </label>
+            </div>
+            {% endfor %}
+        </fieldset>
+    </div>
+
+    <div class="form-group row">
+        <label for="staticcountries" class="col-form-label">To Location</label>
+        <fieldset class="form-group">
+            {% for countries in countries_book %}
+            {% set countries_slug = countries.replace('&','-').replace(' ','') %}
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    <a data-toggle="collapse" href=".collapse{{ countries_slug }}" role="button" aria-expanded="false"
+                        aria-controls="collapse{{ countries }}">
+                        {{ countries }}
+                    </a>
+                </label>
+            </div>
+            {% endfor %}
+        </fieldset>
+    </div>
+
+</form>
