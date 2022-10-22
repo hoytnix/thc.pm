@@ -5,7 +5,6 @@ app:
   gtm: W8J9GD7
   theme: vapor
   navbar_pages:
-    Home: /
     Marketplace: {
       Buy: '/buy',
       Sell: '/sell',
