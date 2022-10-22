@@ -62,9 +62,20 @@
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
           {% for key, value in navbar_pages.items() %}
+          {% if value is mapping %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">{{ key|e }}</a>
+              <div class="dropdown-menu" data-bs-popper="static">
+              {% for _key, _value in value.items() %}
+                <a class="dropdown-item" href="{{ _value }}">{{ _key }}</a>
+              {% endfor %}
+              </div>
+            </li>
+          {% else %}
             <li class="nav-item active">
               <a class="nav-link" href="{{ value|e }}">{{ key|e }}</a>
             </li>
+          {% endif %}
           {% endfor %}
           <li class="nav-item active social-top-nav">
             {% for key in social_media %}

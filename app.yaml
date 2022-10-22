@@ -6,9 +6,11 @@ app:
   theme: vapor
   navbar_pages:
     Home: /
-    Buy: /buy
-    Sell: /sell
-    Coins: /coins
+    Marketplace: {
+      Buy: '/buy',
+      Sell: '/sell',
+      Supported Coins: '/coins',
+    }
     FAQs: /faqs
     News: /news
     Donate: /donate
