@@ -11,6 +11,7 @@ app:
     Coins: /coins
     FAQs: /faqs
     News: /news
+    Donate: /donate
   social_media:
     #amazon: https://www.amazon.com/author/revmichaelhoyt
     #facebook: https://www.facebook.com/SaintsBeTold/
@@ -20,7 +21,7 @@ app:
     youtube: https://youtube.com/channel/UCNx9OlImFLIp9zYI9xteX9g
     github: https://github.com/hoytnix/thc.pm
     telegram: https://t.me/thcexchange
-    btc: https://nowpayments.io/donation?api_key=CGQ20M6-7Q9MNZN-NVGGYKA-HAJVP89
+    monero: https://nowpayments.io/donation?api_key=CGQ20M6-7Q9MNZN-NVGGYKA-HAJVP89
   contact:
     name: thc.pm
     phone: "+12698610617"
@@ -184,6 +185,9 @@ blueprints:
     - buy:
         title: Buy
         description: Buy
+    - donate:
+        title: Donate
+        description: Donate
   affiliates:
     - google:
         affiliate_url: "https://google.com"

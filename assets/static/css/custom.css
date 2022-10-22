@@ -145,3 +145,21 @@ ul {
 .card-body a {
   margin-top: 1em;
 }
+
+.crypto_address {
+  margin: auto;
+  max-width: 500px;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+h4, img, .crypto_address {
+  margin-top: 1em;
+}
+
+.crypto_qr {
+  width: 300px;
+  max-width: 300px;
+}
