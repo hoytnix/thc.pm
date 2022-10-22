@@ -11,9 +11,11 @@ app:
       Sell: '/sell',
       Supported Coins: '/coins',
     }
-    FAQs: /faqs
-    News: /news
-    Donate: /donate
+    About: {
+      FAQs: '/faqs',
+      News: '/news',
+      Donate: '/donate'
+    }
   social_media:
     #amazon: https://www.amazon.com/author/revmichaelhoyt
     #facebook: https://www.facebook.com/SaintsBeTold/
