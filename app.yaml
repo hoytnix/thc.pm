@@ -21,7 +21,7 @@ app:
     youtube: https://youtube.com/channel/UCNx9OlImFLIp9zYI9xteX9g
     github: https://github.com/hoytnix/thc.pm
     telegram: https://t.me/thcexchange
-    monero: https://nowpayments.io/donation?api_key=CGQ20M6-7Q9MNZN-NVGGYKA-HAJVP89
+    monero: /donate
   contact:
     name: thc.pm
     phone: "+12698610617"
