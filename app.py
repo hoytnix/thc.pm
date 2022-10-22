@@ -9,7 +9,7 @@ import markdown
 from csscompressor import compress as csscompress
 from htmlmin import minify as htmlminify
 from jinja2 import Environment, PackageLoader, BaseLoader, FileSystemLoader
-from slimit import minify as jsminify
+from rjsmin import jsmin as jsminify
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 from webptools import webplib as webp
@@ -59,7 +59,7 @@ class Handler(FileSystemEventHandler):
 
 
 def build_template(template_key, config, page_name):
-    env = Environment(loader=FileSystemLoader(searchpath="/home/john/Dev/CMS/assets"))
+    env = Environment(loader=FileSystemLoader(searchpath="./assets"))
     template = env.get_template('templates/{}.jinja2'.format(template_key))
 
     config['page_name'] = page_name
@@ -220,7 +220,7 @@ def builder():
     for (root, dirs, files) in os.walk('dist/static/js'):
         for file in files:
             with open(root + '/' + file, 'r') as stream:
-                js = jsminify(stream.read(), mangle=False)
+                js = jsminify(stream.read())
                 m = hashlib.md5()
                 m.update(str.encode(js))
                 hashsum = m.hexdigest()

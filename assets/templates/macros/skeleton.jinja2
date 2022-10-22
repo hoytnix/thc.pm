@@ -14,42 +14,8 @@
     <link rel="preload" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></noscript>
 
-    <script type="module">
-
-      // Import the functions you need from the SDKs you need
-    
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
-      import { collection, addDoc, getFirestore } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";
-    
-      // TODO: Add SDKs for Firebase products that you want to use
-    
-      // https://firebase.google.com/docs/web/setup#available-libraries
-    
-    
-      // Your web app's Firebase configuration
-    
-      const firebaseConfig = {
-    
-        apiKey: "AIzaSyA1yZwOiPpS-Zx7YA-nKhBZPcjWC9pEX6w",
-    
-        authDomain: "free-thc.firebaseapp.com",
-    
-        projectId: "free-thc",
-    
-        storageBucket: "free-thc.appspot.com",
-    
-        messagingSenderId: "15919007663",
-    
-        appId: "1:15919007663:web:7b6cda410ddf8e5f27915a"
-    
-      };
-    
-    
-      // Initialize Firebase
-    
-      const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app);
-    </script>
+    <!-- Firebase -->
+    <script type="module">import{initializeApp}from"https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";import{collection,addDoc,getFirestore}from"https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";const firebaseConfig={apiKey:"AIzaSyA1yZwOiPpS-Zx7YA-nKhBZPcjWC9pEX6w",authDomain:"free-thc.firebaseapp.com",projectId:"free-thc",storageBucket:"free-thc.appspot.com",messagingSenderId:"15919007663",appId:"1:15919007663:web:7b6cda410ddf8e5f27915a"},app=initializeApp(firebaseConfig),db=getFirestore(app);</script>
 
     <!-- Proprietary -->
     <link rel="stylesheet" href="/static/css/custom.css">
@@ -72,52 +38,10 @@
     {% endif %}
 
     <!-- JSON-LD -->
-    <script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "LocalBusiness",
-        "@id": "{{ jsonld_id }}",
-        "url": "{{ canonical_url }}",
-        "name": "{{ proj_title }}",
-        "address":
-          "@type": "PostalAddress",
-          "streetAddress": "{{ contact['mail']['street'] }}",
-          "addressLocality": "{{ contact['mail']['city'] }}",
-          "addressRegion": "{{ contact['mail']['state'] }}",
-          "postalCode": "{{ contact['mail']['postal'] }}",
-          "addressCountry": "US"
-        },
-        "telephone": "{{ contact['phone'] }}",
-        "priceRange": "$$",
-        {%- if img %}
-        "image": "{{ canonical_url }}/static/img/webp/{{ '.'.join(img.split('.')[:-1]) }}.webp",
-        {% endif -%}
-        {%- if description -%}
-        "description": "{{ description }}",
-        {% endif -%}
-
-        "sameAs": [
-          {% for key in social_media -%}
-          "{{ social_media[key] }}"{% if not loop.last %},{% endif %}
-          {% endfor -%}
-        ]
-    }
-    </script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"LocalBusiness","@id":"{{ jsonld_id }}","url":"{{ canonical_url }}","name":"{{ proj_title }}","address":"@type":"PostalAddress","streetAddress":"{{ contact['mail']['street'] }}","addressLocality":"{{ contact['mail']['city'] }}","addressRegion":"{{ contact['mail']['state'] }}","postalCode":"{{ contact['mail']['postal'] }}","addressCountry":"US"},"telephone":"{{ contact['phone'] }}","priceRange":"$$",{%-if img%}"image":"{{ canonical_url }}/static/img/webp/{{ '.'.join(img.split('.')[:-1]) }}.webp",{%endif-%}{%-if description-%}"description":"{{ description }}",{%endif-%}"sameAs":[{%for key in social_media-%}"{{ social_media[key] }}"{%if not loop.last%},{%endif%}{%endfor-%}]}</script>
 
     <!-- Defer JS -->
-    <script type="text/javascript">
-    function GetJS() {
-      var element = document.createElement("script");
-      element.src = "/static/js/app.js";
-      document.body.appendChild(element);
-
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-{{ gtm }}');
-    }
-    </script>
+    <script type="text/javascript">function GetJS() {var element=document.createElement("script");element.src="/static/js/app.js",document.body.appendChild(element),function(e,t,a,n,m){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var s=t.getElementsByTagName(a)[0],r=t.createElement(a);r.async=!0,r.src="https://www.googletagmanager.com/gtm.js?id=GTM-{{ gtm }}",s.parentNode.insertBefore(r,s)}(window,document,"script","dataLayer");}</script>
 
     <title>{% if title %}{{ title }} - {% endif %}{{ proj_title }}</title>
 
