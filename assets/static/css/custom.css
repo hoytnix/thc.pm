@@ -180,3 +180,9 @@ h4, img, .crypto_address {
   font-size: 200%;
   margin-right: 1rem;
 }
+
+.btn-search-collapse {
+  max-width: 300px;
+  margin: 1rem;
+  text-align: left;
+}
