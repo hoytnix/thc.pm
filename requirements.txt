@@ -11,3 +11,4 @@ slimit==0.8.1
 uuid==1.30
 watchdog==2.1.9
 webptools==0.0.9
+gnupg

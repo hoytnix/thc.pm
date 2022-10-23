@@ -2,6 +2,11 @@ h1 {
   margin: 0.5em 0;
 }
 
+ul {
+  padding-left: 1em;
+  text-align: left;
+}
+
 .container {
   text-align: center;
   margin-bottom: 2em;
@@ -160,6 +165,8 @@ h4, img, .crypto_address {
 }
 
 .crypto_qr {
-  width: 300px;
-  max-width: 300px;
+  width: 250px;
+  height: 250px;
+  max-width: 250px;
+  max-height: 250px;
 }
