@@ -243,3 +243,7 @@ models:
         title: Do I have To Pay The Seller's Bond?
         tags: [sellers, bond, invitation code]
         short: No. You may have received an invitation code, if so, we waived your bond. Welcome aboard!<br/><br/>(Sellers with an invitation code have been pre-qualified as trusthworthy & ethical; and have Instant Payments automatically enabled for their accounts.)
+      sellers-withdraws:
+        title: How Much Are Withdraw Fees?
+        tags: [sellers, withdraw, fees]
+        short: 1%
