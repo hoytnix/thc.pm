@@ -170,3 +170,8 @@ h4, img, .crypto_address {
   max-width: 250px;
   max-height: 250px;
 }
+
+.navbar-icon {
+  height: 40px;
+  margin: 0 0 0 1em;
+}
