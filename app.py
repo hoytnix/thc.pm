@@ -1,8 +1,10 @@
+from dns import resolver
 import os
 import shutil
 import time
 import hashlib
-
+import ipaddress
+import re
 
 import click
 import markdown
@@ -19,6 +21,8 @@ try:
     from yaml import CLoader as Loader, CDumper as Dumper
 except ImportError:
     from yaml import Loader, Dumper
+
+domain_pattern = re.compile('(([\da-zA-Z_])([_\w-]{,62})\.){,127}(([\da-zA-Z])[_\w-]{,61})?([\da-zA-Z]\.((xn\-\-[a-zA-Z\d]+)|([a-zA-Z\d]{2,})))$', re.IGNORECASE)
 
 
 
@@ -56,6 +60,43 @@ class Handler(FileSystemEventHandler):
             print("Received modified event - %s." % event.src_path)
 
         builder()
+
+
+def parse_spf(domain):
+    ips = set()
+    answers = resolver.resolve(domain.strip(), "TXT")
+    for rdata in answers:
+        splitted = rdata.to_text().split(' ')
+        for split in splitted:
+            split = split.strip()
+
+            if split.startswith('ip4:') or split.startswith('ip6:'):
+                split = split.lstrip('ip4:')
+                split = split.lstrip('ip6:')
+
+                try:
+                    ipaddress.ip_address(split)
+                    ips.add(split)
+                    continue
+                except ValueError:
+                    pass
+
+                try:
+                    ipaddress.ip_network(split)
+                    ips.add(split)
+                    continue
+                except ValueError:
+                    pass
+
+            if split.startswith('include:'):
+                split = split.lstrip('include:')
+                if domain_pattern.match(split):
+                    ips.update(parse_spf(split))
+                    continue
+
+            #print("Unrecognized entry", split)
+
+    return ips
 
 
 def build_template(template_key, config, page_name):
@@ -242,6 +283,16 @@ def builder():
                 html = htmlminify(html,  remove_comments=True, remove_empty_space=True, remove_all_empty_space=True)
                 with open(fp, 'w+') as stream:
                     stream.write(html)
+    
+    # Print Firebase IP Range To Text
+    domain = '_cloud-netblocks.googleusercontent.com'
+    with open('firebase_ips.txt', 'r') as stream:
+        new_dns = sorted(parse_spf(domain=domain))
+        old_dns = sorted(stream.read().split('\n'))
+        if new_dns != old_dns:
+            print('Firebase IP Range Has Changed')
+            with open('firebase_ips_2.txt', 'w+') as _stream:
+                _stream.write('\n'.join(new_dns))
 
 
 @click.group()
