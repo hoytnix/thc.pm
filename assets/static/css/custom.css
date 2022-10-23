@@ -196,3 +196,7 @@ h4, img, .crypto_address {
 .card {
   display: inline-block;
 }
+
+.card-home {
+  width: 420px;
+}
