@@ -58,7 +58,7 @@ ul {
 
 .featured-img {
   margin-top: 1em;
-  max-width: 100%;
+  max-width: 500px;
   max-height: 50vh;
 }
 
@@ -78,6 +78,7 @@ ul {
   line-height: 1.2em;
   position: relative;
   overflow: hidden;
+  margin-bottom: 3rem;
 }
 .scroller > span {
   position: absolute;
@@ -190,4 +191,8 @@ h4, img, .crypto_address {
 
 .scroller-container {
   width: 80vw;
+}
+
+.card {
+  display: inline-block;
 }
