@@ -66,22 +66,22 @@
   <script src="https://unpkg.com/@nowpaymentsio/nowpayments-api-js/dist/nowpayments-api-js.min.js"></script>
   <script>
     const body = document.body;
-    const api = new NOWPaymentsApiJS({ apiKey: 'CGQ20M6-7Q9MNZN-NVGGYKA-HAJVP89' }) // your api key
+    const api = new NOWPaymentsApiJS({ apiKey: 'CGQ20M6-7Q9MNZN-NVGGYKA-HAJVP89' }); // your api key
 
     async function fetchCurrencies() {
-      const { currencies } = await api.getCurrencies()
-      const selectList = document.createElement("select")
-      selectList.id = "mySelect"
-      body.appendChild(selectList)
+      const { currencies } = await api.getCurrencies();
+      const selectList = document.createElement("select");
+      selectList.id = "mySelect";
+      document.body.appendChild(selectList);
 
       for (var i = 0; i < currencies.length; i++) {
-        const option = document.createElement("option")
-        option.value = currencies[i]
-        option.text = currencies[i]
-        selectList.appendChild(option)
+        const option = document.createElement("option");
+        option.value = currencies[i];
+        option.text = currencies[i];
+        selectList.appendChild(option);
       }
     }
-    fetchCurrencies()
+    /* fetchCurrencies(); */
   </script>
 
   <!-- Defer JS -->
@@ -213,7 +213,6 @@
           <a href="https://npmjs.com" target="_blank">
             <i class="fa-brands fa-npm"></i>
           </a>
-
       </p>
       <p>
 
