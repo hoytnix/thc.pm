@@ -182,7 +182,8 @@ h4, img, .crypto_address {
 }
 
 .btn-search-collapse {
-  max-width: 300px;
+  width: 500px;
+  max-width: 80vw;
   margin: 1rem;
   text-align: left;
 }
