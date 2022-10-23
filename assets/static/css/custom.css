@@ -84,7 +84,7 @@ ul {
   top: 0;
   left: 50%;
   transform: translate(-50%, 0);
-  animation: slide 12s infinite;
+  animation: slide 20s infinite;
   font-weight: bold;
 }
 @keyframes slide {
@@ -186,4 +186,8 @@ h4, img, .crypto_address {
   max-width: 80vw;
   margin: 1rem;
   text-align: left;
+}
+
+.scroller-container {
+  width: 80vw;
 }
