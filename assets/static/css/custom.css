@@ -175,3 +175,8 @@ h4, img, .crypto_address {
   height: 40px;
   margin: 0 0 0 0.5rem;
 }
+
+.legal-disclaimer > p > a > i {
+  font-size: 200%;
+  margin-right: 1rem;
+}
