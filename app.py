@@ -112,7 +112,7 @@ def load_yamls_in_order(path):
                 pass
     return db
 
-def build_template(template_key, config, page_name):
+def build_template(template_key, config, page_name, root=False):
     env = Environment(loader=FileSystemLoader(searchpath="./assets"))
     template = env.get_template('templates/{}.jinja2'.format(template_key))
 
@@ -124,7 +124,9 @@ def build_template(template_key, config, page_name):
 
     html = template.render(**config)
 
-    path = './dist' if page_name == 'index' else './dist/{}'.format(page_name)
+    path = './dist'
+    if not root:
+        path = './dist/{}'.format(page_name)
     
     if page_name.split('/').__len__() == 2:
         try:
@@ -201,6 +203,12 @@ def builder():
 
     # Compile special items
     '''
+    with open('dist/404.html', 'w+') as stream:
+        env = Environment(loader=PackageLoader(__name__, 'assets/templates'))
+        template = env.get_template('404.jinja2')
+        html = template.render({**app_config, **{'urls': sitemap}})
+        stream.write(html)
+
     with open('dist/sitemap.xml', 'w+') as stream:
         env = Environment(loader=PackageLoader(__name__, 'assets/templates'))
         template = env.get_template('sitemap.xml')
@@ -210,12 +218,6 @@ def builder():
     with open('dist/robots.txt', 'w+') as stream:
         env = Environment(loader=PackageLoader(__name__, 'assets/templates'))
         template = env.get_template('robots.txt')
-        html = template.render(**app_config)
-        stream.write(html)
-
-    with open('dist/404.jinja2', 'w+') as stream:
-        env = Environment(loader=PackageLoader(__name__, 'assets/templates'))
-        template = env.get_template('404.jinja2')
         html = template.render(**app_config)
         stream.write(html)
     '''
