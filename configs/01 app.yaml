@@ -1,6 +1,6 @@
 proj_title: thc.pm
 jsonld_id: "A1QCnkf5yThfc6DLtFzs"
-gtm: W8J9GD7
+gtm: K7PWJFM
 theme: vapor
 navbar_pages:
   Marketplace: { Buy: "/buy", Sell: "/sell", Blockchains: "/coins" }
