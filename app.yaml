@@ -8,7 +8,7 @@ app:
     Marketplace: {
       Buy: '/buy',
       Sell: '/sell',
-      Supported Coins: '/coins',
+      Blockchains: '/coins',
     }
     About: {
       FAQs: '/faqs',
