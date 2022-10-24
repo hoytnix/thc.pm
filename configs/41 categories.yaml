@@ -1,0 +1,51 @@
+categories_book:
+  Distillates & Isolates: ["Crude"]
+  Flowers: ["Pre-Rolled", "Caviar", "Kief", "Biomass"]
+  Hash: ["Hashish", "Moon Rocks", "Bubble Hash"]
+  Edibles: ["Gummies", "Candies", "Chocolates", "Baked Goods", "Other"]
+  Cartridges: ["510", "Pod", Disposable']
+  Concentrates:
+    [
+      "Live Hash Rosin",
+      "Flower Rosin (Cured)",
+      "Flower Rosin (Fresh)",
+      "Sugar Wax",
+      "Crumble",
+      "Budder",
+      "Badder",
+      "Shatter",
+      "Ice Rocks",
+    ]
+  Digital Goods:
+    [
+      "1-To-1 Consulting",
+      "1-To-Many Consulting",
+      "Memberships",
+      "File Downloads",
+    ]
+tags_book:
+  Manufacturing Process:
+    [
+      "cGMP",
+      "USDA Organic",
+      "Kosher",
+      "Vegan",
+      "Dairy-Free",
+      "Sugar-Free",
+      "Soy-Free",
+    ]
+  Flowers:
+    [
+      "Dry Sift",
+      "Hand Trimmed",
+      "Machine Trimmed",
+      "Outdoor",
+      "Indoor",
+      "Hydroponic",
+      "Aeroponic",
+    ]
+  Solvents: ["Solventless", "BHO", "CO2"]
+  Pre-Packaged: ["Pre-Packaged w/ SKU", "Pre-Packaged w/o SKU"]
+  Winterized: ["Is Winterized", "Not Winterized", "Partially Winterized"]
+  Decarbed: ["Is Decarbed", "Not Decarbed", "Partially Decarbed"]
+  Dewaxed: ["Is Dewaxed", "Not Dewaxed", "Partially Dewaxed"]

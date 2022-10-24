@@ -99,6 +99,19 @@ def parse_spf(domain):
     return ips
 
 
+def load_yamls_in_order(path):
+    db = {}
+    fps = sorted([fp for fp in os.listdir(path)])
+    for fp in fps:
+        with open(path + fp, 'r') as stream:
+            o = load(stream, Loader=Loader)
+            try:
+                for k in o:
+                    db[k] = o[k]
+            except:
+                pass
+    return db
+
 def build_template(template_key, config, page_name):
     env = Environment(loader=FileSystemLoader(searchpath="./assets"))
     template = env.get_template('templates/{}.jinja2'.format(template_key))
@@ -111,7 +124,7 @@ def build_template(template_key, config, page_name):
 
     html = template.render(**config)
 
-    path = 'dist' if page_name == 'index' else 'dist/{}'.format(page_name)
+    path = './dist' if page_name == 'index' else './dist/{}'.format(page_name)
     
     if page_name.split('/').__len__() == 2:
         try:
@@ -129,11 +142,10 @@ def build_template(template_key, config, page_name):
 
 
 def builder():
-    with open('app.yaml', 'r') as stream:
-        o = load(stream, Loader=Loader)
-        app_config = o['app']
-        blueprints = o['blueprints']
-        models = o['models']
+    # Import Configs
+    app_config = load_yamls_in_order('./configs/')
+    models = load_yamls_in_order('./models/')
+    blueprints = load_yamls_in_order('./blueprints/')
 
     # Sitemap Data
     sitemap = []

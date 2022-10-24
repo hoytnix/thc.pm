@@ -1,0 +1,26 @@
+cannabinoids_book:
+  THC: ["Δ6a10a-THC", "Δ8-THC", "Δ9-THC", "Δ10-THC"]
+  THC-A: ["Δ6a10a-THC-A", "Δ8-THC-A", "Δ9-THC-A", "Δ10-THC-A"]
+  THC-O: ["Δ6a10a-THC-O", "Δ8-THC-O", "Δ9-THC-O", "Δ10-THC-O"]
+  HHC: []
+  HHC-O: []
+  CBX: ["CBD", CBG', "CBN", "CBC", "CBT"]
+  CBX-A: [CBD-A', "CBG-A", "CBN-A"]
+  CBX-O: ["CBD-O", "CBG-O", "CBN-O"]
+  Water Soluble:
+    ["WS CBX", "WS CBX-O", "WS THC", "WS THC-O", "WS HHC", "WS HHC-O"]
+  Other Acetates: []
+  Other Cannabinoids:
+    [
+      "CBD-P",
+      "THC-P",
+      "THC-P-O",
+      "HHC-P",
+      "THC-JD",
+      "CBD-V",
+      "THC-V",
+      "THC-H",
+      "THC-B",
+      "H4CBD",
+      "JWH",
+    ]

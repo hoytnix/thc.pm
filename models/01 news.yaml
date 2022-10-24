@@ -1,0 +1,15 @@
+news:
+  templates:
+    news: news
+    articles: { title: article/* }
+    tags: { tags: "tag/[*]" }
+  items:
+    hello-world:
+      title: Hello World
+      tags: [foo, bar, lorem, ipsum]
+    foo:
+      title: Foo
+      tags: [foo, lorem]
+    bar:
+      title: Bar
+      tags: [bar, ipsum]

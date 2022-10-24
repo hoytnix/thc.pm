@@ -1,0 +1,38 @@
+coin_book:
+  xmr: Monero
+  btc: Bitcoin
+  eth: Ethereum
+  usdt: Tether
+  doge: Dogecoin
+  xrp: Ripple
+  xlm: Lumens
+  ada: Cardano
+  sol: Solana
+  matic: Polygon
+  dot: Polkadot
+  dai: Dai
+  trx: TRON
+  shib: Shiba Inu
+  avax: Avalananche
+  uni: Uniswap
+  leo: UNUS SED LEO
+  ltc: Litecoin
+  maticmainnet: Polygon
+  link: Chainlink
+  etc: Ethereum Classic
+  algo: Algorand
+  bch: Bitcoin Cash
+  xno: Nano
+  vet: Vechain
+  dash: DASH
+  zec: Zcash
+  usdt_omni: Tether (OMNI)
+  usdterc20: Tether (ERC20)
+  usdttrc20: Tether (TRC20)
+  usdc: USD Coin
+  busd: Binance USD
+  usdp: Pax Dollar
+  tusd: TrueUSD
+  gusd: Gemini Dollar
+  cake: PancakeSwap
+  ust: TerraClassicUSD

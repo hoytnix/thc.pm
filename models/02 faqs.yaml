@@ -1,0 +1,38 @@
+faqs:
+  templates:
+    faqs: faqs
+    faq: { title: faq/* }
+    tags: { tags: "tag/[*]" }
+  items:
+    payment-methods:
+      title: Do You Accept Payments Other Than Crypto?
+      tags: [buyers]
+      short: <ul><li>While thc.pm does not escrow non-crypto payments some Sellers may accept payments other than Crypto such as Cash App, Venmo, Zelle, Credit Card & ACH.</li><li>You may filter by available payment methods from the <a href="/buy">search</a>.</li><li>thc.pm does not allow the public advertisement of contact information - <a href="#">PM</a> your favorite Seller to request their contact information if you choose to use an alternative payment method.</li><li>Again, thc.pm does not escrow non-crypto payments so use alternative payment methods at your own risk!</li><li>Also, you may not leave reviews or feedback for purchases made via alternative payment methods.</li><li>Purchases made via alternative payment methods may not be mentioned on thc.pm. Offenders will be temporarily banned from buying/selling for 15 days.</li></ul>
+    instant-payments-101:
+      title: How Do Instant Payments Work? [Instant Payments 101]
+      tags: [instant payments, sellers, buyers]
+      short: Instant Payments are powered by <a href="https://nowpayments.io">nowpayments.io</a>.<br/><br/>To enable Instant Payments for your Seller's account <a href="#">request Instant Payments permission</a>.
+    escrow-101:
+      title: How Does Escrow Work? [Escrow 101]
+      tags: [escrow, sellers, buyers]
+      short: Escrow is powered by <a href="https://nowpayments.io">nowpayments.io</a>.
+    instant-payment-fees:
+      title: What Are The Fees For Instant Payments?
+      tags: [instant payments, buyers, sellers]
+      short: 0.5% For Buyers & 1% For Sellers.
+    escrow-fees:
+      title: What Are The Fees For Escrow?
+      tags: [escrow, buyers, sellers]
+      short: 1% For Buyers & 2.5% For Sellers.
+    sellers-bond:
+      title: What's The Seller's Bond?
+      tags: [sellers, bond]
+      short: 1 $XMR (~$142 USD) Annually.
+    sellers-bond-invitation-code:
+      title: Do I have To Pay The Seller's Bond?
+      tags: [sellers, bond, invitation code]
+      short: No. You may have received an invitation code, if so, we waived your bond. Welcome aboard!<br/><br/>(Sellers with an invitation code have been pre-qualified as trusthworthy & ethical; and have Instant Payments automatically enabled for their accounts.)
+    sellers-withdraws:
+      title: How Much Are Withdraw Fees?
+      tags: [sellers, withdraw, fees]
+      short: 1%

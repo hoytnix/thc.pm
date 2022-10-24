@@ -1,0 +1,22 @@
+proj_title: thc.pm
+jsonld_id: "A1QCnkf5yThfc6DLtFzs"
+gtm: W8J9GD7
+theme: vapor
+navbar_pages:
+  Marketplace: { Buy: "/buy", Sell: "/sell", Blockchains: "/coins" }
+  About: { FAQs: "/faqs", News: "/news", Donate: "/donate" }
+social_media:
+  twitter: https://twitter.com/thcexchange
+  linkedin: https://www.linkedin.com/in/economyofdreams
+  youtube: https://youtube.com/channel/UCNx9OlImFLIp9zYI9xteX9g
+  github: https://github.com/hoytnix/thc.pm
+  telegram: https://t.me/thcexchange
+contact:
+  name: thc.pm
+  phone: "+12698610617"
+  email: "hello@thc.pm"
+  mail:
+    street: "1207 Delaware Ave #1337"
+    city: Wilmington
+    state: DE
+    postal: "19806"
