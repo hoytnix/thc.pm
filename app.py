@@ -239,49 +239,6 @@ def builder():
     except:
         pass
     shutil.copytree(src='assets/static', dst='dist/static')
-
-    # CSS Minification
-    static_cache = {}
-    for (root, dirs, files) in os.walk('dist/static/css'):
-        for file in files:
-            with open(root + '/' + file, 'r') as stream:
-                css = csscompress(stream.read())
-                m = hashlib.md5()
-                m.update(str.encode(css))
-                hashsum = m.hexdigest()
-                new_file = "{}.{}.css".format(".".join(file.split('.')[:-1]), hashsum)
-                with open('dist/static/css/' + new_file, 'w+') as stream:
-                    stream.write(css)
-                static_cache[file] = new_file
-            os.remove(root + '/' + file)
-        break
-
-    # JS Minification
-    for (root, dirs, files) in os.walk('dist/static/js'):
-        for file in files:
-            with open(root + '/' + file, 'r') as stream:
-                js = jsminify(stream.read())
-                m = hashlib.md5()
-                m.update(str.encode(js))
-                hashsum = m.hexdigest()
-                new_file = "{}.{}.js".format(".".join(file.split('.')[:-1]), hashsum)
-                with open('dist/static/js/' + new_file, 'w+') as stream:
-                    stream.write(js)
-                static_cache[file] = new_file
-            os.remove(root + '/' + file)
-        break
-
-    # Cache Busting
-    for (root, dirs, files) in os.walk('dist'):
-        for file in files:
-            if file.endswith('html'):
-                fp = root + '/' + file
-                html = open(fp, 'r').read()
-                for key in static_cache:
-                    html = html.replace(key, static_cache[key])
-                html = htmlminify(html,  remove_comments=True, remove_empty_space=True, remove_all_empty_space=True)
-                with open(fp, 'w+') as stream:
-                    stream.write(html)
     
     # Print Firebase IP Range To Text
     domain = '_cloud-netblocks.googleusercontent.com'
