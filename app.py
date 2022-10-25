@@ -202,7 +202,7 @@ def builder():
                         sitemap.append(t_glob.replace('[*]', k))
 
     # Compile special items
-    build_template('home.jinja2', {**app_config}, 'home', './dist/index.html')
+    build_template('home.jinja2', {**app_config, **blueprints['pages']['home']}, 'home', './dist/index.html')
     build_template('404.jinja2', {**app_config}, None, './dist/404.html')
     build_template('sitemap.xml', {**app_config, **{'urls': sitemap}}, None, './dist/sitemap.xml')
     build_template('robots.txt', {**app_config}, None, './dist/robots.txt')

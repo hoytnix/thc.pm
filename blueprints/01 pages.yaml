@@ -1,30 +1,30 @@
 pages:
-  - index:
-      img: foobar.png
-      description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  - sign-up:
-      title: Sign Up
-      img: foobar.png
-      description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  - register:
-      title: Register
-      img: foobar.png
-      description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  - terms-of-use:
-      title: Terms of Use
-      description: Terms of Use
-  - privacy-policy:
-      title: Privacy Policy
-      description: Privacy Policy
-  - coins:
-      title: Supported Coins
-      description: Cryptocurrencies thc.pm Supports
-  - sell:
-      title: Sell
-      description: Sell
-  - buy:
-      title: Buy
-      description: Buy
-  - donate:
-      title: Donate
-      description: Donate
+  home:
+    img: foobar.png
+    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  sign-up:
+    title: Sign Up
+    img: foobar.png
+    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  register:
+    title: Register
+    img: foobar.png
+    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  terms-of-use:
+    title: Terms of Use
+    description: Terms of Use
+  privacy-policy:
+    title: Privacy Policy
+    description: Privacy Policy
+  coins:
+    title: Supported Coins
+    description: Cryptocurrencies thc.pm Supports
+  sell:
+    title: Sell
+    description: Sell
+  buy:
+    title: Buy
+    description: Buy
+  donate:
+    title: Donate
+    description: Donate
