@@ -8,10 +8,7 @@ import re
 
 import click
 import markdown
-from csscompressor import compress as csscompress
-from htmlmin import minify as htmlminify
 from jinja2 import Environment, PackageLoader, BaseLoader, FileSystemLoader
-from rjsmin import jsmin as jsminify
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 from webptools import webplib as webp
