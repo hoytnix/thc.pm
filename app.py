@@ -112,34 +112,34 @@ def load_yamls_in_order(path):
                 pass
     return db
 
-def build_template(template_key, config, page_name, root=False):
+def build_template(template_key, config, page_name, output_path, root=False):
     env = Environment(loader=FileSystemLoader(searchpath="./assets"))
-    template = env.get_template('templates/{}.jinja2'.format(template_key))
+    template = env.get_template('templates/' + template_key)
 
     config['page_name'] = page_name
     try:
-        config['body'] = Environment(loader=BaseLoader).from_string(markdown.markdown(open('./assets/pages/{}.jinja2'.format(page_name)).read())).render(**config)
+        config['body'] = Environment(loader=BaseLoader).from_string(markdown.markdown(open('./assets/pages/%s.jinja2' % page_name).read())).render(**config)
     except:
         pass
 
     html = template.render(**config)
 
-    path = './dist'
-    if not root:
-        path = './dist/{}'.format(page_name)
-    
-    if page_name.split('/').__len__() == 2:
+    if output_path.split('/').__len__() > 3:
+        n = 1
+        search_paths = output_path.split('/')[2:]
         try:
-            os.mkdir('/'.join(path.split('/')[:-1]))
-        except FileExistsError:
+            search_paths.remove('index.html')
+        except:
             pass
+        for path_key in search_paths:
+            try:
+                path = './dist/' + '/'.join(search_paths[:n])
+                os.mkdir(path)
+            except:
+                pass
+            n += 1
 
-    try:
-        os.mkdir(path)
-    except FileExistsError:
-        pass
-
-    with open(path + '/index.html', 'w+') as stream:
+    with open(output_path, 'w+') as stream:
         stream.write(html)
 
 
@@ -158,13 +158,13 @@ def builder():
 
         # one-to-one
         if type(template_options) is dict:
-            build_template(template_key, {**app_config, **template_options}, template_key)
+            build_template(template_key + '.jinja2', {**app_config, **template_options}, template_key, './dist/%s/index.html' % template_key)
         # one-to-many
         else:
             for page in template_options:
                 page_name = [x for x in page.keys()][0]
                 page_options = page[page_name] or {}
-                build_template(template_key, {**app_config, **page_options}, page_name)
+                build_template(template_key + '.jinja2', {**app_config, **page_options}, page_name, './dist/%s/index.html' % page_name)
                 sitemap.append(page_name)
 
     # Build modeled pages
@@ -175,7 +175,7 @@ def builder():
         for template in templates:
             t = templates[template]
             if type(t) is str: # list views
-                build_template(template, {**app_config, **{'items': items}}, t)
+                build_template(template + '.jinja2', {**app_config, **{'items': items}}, t, './dist/%s/index.html' % t)
                 sitemap.append(t)
             else: # detail views
                 t_search = [k for k in t][0]
@@ -187,7 +187,7 @@ def builder():
 
                     if t_glob.endswith('*'):
                         page_options = {**app_config, **item}
-                        build_template(template, page_options, t_glob.replace('*', page_name))
+                        build_template(template + '.jinja2', page_options, t_glob.replace('*', page_name), './dist/%s/index.html' % t_glob.replace('*', page_name))
                         sitemap.append(t_glob.replace('*', page_name))
                     else:
                         for v in item[t_search]:
@@ -198,29 +198,14 @@ def builder():
                 if t_glob.endswith('[*]'):
                     for k in kvs:
                         page_options = {**app_config, **{'kvs': kvs[k], 'title': k}}
-                        build_template(template, page_options, t_glob.replace('[*]', k))
+                        build_template(template + '.jinja2', page_options, t_glob.replace('[*]', k), './dist/%s/index.html' % t_glob.replace('[*]', k))
                         sitemap.append(t_glob.replace('[*]', k))
 
     # Compile special items
-    '''
-    with open('dist/404.html', 'w+') as stream:
-        env = Environment(loader=PackageLoader(__name__, 'assets/templates'))
-        template = env.get_template('404.jinja2')
-        html = template.render({**app_config, **{'urls': sitemap}})
-        stream.write(html)
-
-    with open('dist/sitemap.xml', 'w+') as stream:
-        env = Environment(loader=PackageLoader(__name__, 'assets/templates'))
-        template = env.get_template('sitemap.xml')
-        html = template.render({**app_config, **{'urls': sitemap, 'date': '2020-04-13'}})
-        stream.write(html)
-
-    with open('dist/robots.txt', 'w+') as stream:
-        env = Environment(loader=PackageLoader(__name__, 'assets/templates'))
-        template = env.get_template('robots.txt')
-        html = template.render(**app_config)
-        stream.write(html)
-    '''
+    build_template('home.jinja2', {**app_config}, 'home', './dist/index.html')
+    build_template('404.jinja2', {**app_config}, None, './dist/404.html')
+    build_template('sitemap.xml', {**app_config, **{'urls': sitemap}}, None, './dist/sitemap.xml')
+    build_template('robots.txt', {**app_config}, None, './dist/robots.txt')
 
     # Minify Images
     img_task = False
