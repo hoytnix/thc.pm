@@ -24,6 +24,7 @@
   <!-- Firebase -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+    import * as firebaseui from 'firebaseui'
 
     const firebaseConfig = {
 
@@ -42,6 +43,7 @@
 
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
   </script>
 
   <!-- Proprietary -->
@@ -290,6 +292,7 @@
   <script src="/static/js/vendor/jquery-3.2.1.slim.min.js"></script>
   <script src="/static/js/vendor/popper.min.js"></script>
   <script src="/static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/firebaseui@6.0.1/dist/npm.min.js"></script>
 
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-{{ gtm }}" height="0" width="0"

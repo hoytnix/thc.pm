@@ -156,6 +156,7 @@ def builder():
         # one-to-one
         if type(template_options) is dict:
             build_template(template_key + '.jinja2', {**app_config, **template_options}, template_key, './dist/%s/index.html' % template_key)
+            print('./dist/%s/index.html' % template_key)
         # one-to-many
         else:
             for page in template_options:
@@ -199,7 +200,7 @@ def builder():
                         sitemap.append(t_glob.replace('[*]', k))
 
     # Compile special items
-    build_template('home.jinja2', {**app_config, **blueprints['pages']['home']}, 'home', './dist/index.html')
+    build_template('home.jinja2', {**app_config, **{'title': 'thc.pm', 'description': 'Exchange Crypto For Physical & Digital Hemp-Derived Goods & Services', 'img': '.'}}, 'home', './dist/index.html')
     build_template('404.jinja2', {**app_config}, None, './dist/404.html')
     build_template('sitemap.xml', {**app_config, **{'urls': sitemap}}, None, './dist/sitemap.xml')
     build_template('robots.txt', {**app_config}, None, './dist/robots.txt')
